@@ -21,7 +21,7 @@ static int is_delim(char c, char *delims)
 
 char *my_strtok(char *str, char *delims)
 {
-    static char *save = NULL;
+    char *save = NULL;
     char *start;
 
     if (str != NULL)
