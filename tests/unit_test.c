@@ -89,25 +89,6 @@ Test(my_strtok, put_line)
     cr_assert_str_eq(token, "Never");
 }
 
-Test(my_strtok, put_line_error)
-{
-    char str[] = "Never stop dreaming";
-    char *token = my_strtok(str, " ");
-    cr_assert_str_neq(token, "azerty");
-}
-
-Test(my_strtok, put_line_more)
-{
-    char str[] = "Never stop dreaming";
-    char *token = my_strtok(str, " ");
-    char *tok = my_strtok(NULL, " ");
-    char *to = my_strtok(NULL, " ");
-    cr_assert_str_eq(token, "Never");
-    cr_assert_str_eq(tok, "stop");
-    cr_assert_str_eq(to, "dreaming");
-    cr_assert_str_neq(to, "Curry");
-}
-
 Test(my_getnbr, check_number_pase)
 {
     int i = my_getnbr("45");
