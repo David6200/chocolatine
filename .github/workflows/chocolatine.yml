@@ -25,15 +25,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run coding style checker
-        run: banana-check-repo > coding_style.txt || true
-
-      - name: Fail if coding style errors
-        run: |
-          if [ -s coding_style.txt ]; then
-            echo "Coding style errors found"
-	    cat coding_style.txt
-            exit 1
-          fi
+        run: banana-check-repo
 
       - name: Compile project
 
