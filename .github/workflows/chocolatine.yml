@@ -9,6 +9,7 @@ on:
       - 'no-ga/**'
 
 env:
+
   MIRROR_SSH_URL: "github.com:EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26.git"
   EXECUTABLES: "mysh"
 
@@ -16,12 +17,10 @@ jobs:
 
   check_compilation_and_coding_style:
     if: github.repository != 'EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26'
-
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -31,23 +30,27 @@ jobs:
       - name: Fail if coding style errors
         run: |
           if [ -s coding_style.txt ]; then
+            echo "Coding style errors found"
             exit 1
           fi
 
       - name: Compile project
+
         run: make
+
         timeout-minutes: 2
+
         env:
+
           CC: epiclang
 
-      - name: Clean project
-        run: make clean
-
       - name: Check executables
+
         run: |
           for exe in $(echo "$EXECUTABLES" | tr ',' ' ')
-          do	      
-    	    if [ ! -f "$exe" ]; then
+          do
+
+            if [ ! -f "$exe" ]; then
               echo "$exe not found"
               exit 1
             fi
@@ -55,18 +58,20 @@ jobs:
             if [ ! -x "$exe" ]; then
               echo "$exe not executable"
               exit 1
-      	    fi
+            fi
           done
+
+      - name: Clean project
+        run: make clean
+
 
   run_tests:
     needs: check_compilation_and_coding_style
-    if:github.repository != 'EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26'
-
+    if: github.repository != 'EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26'
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
