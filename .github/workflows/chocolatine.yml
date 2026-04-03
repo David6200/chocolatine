@@ -31,6 +31,7 @@ jobs:
         run: |
           if [ -s coding_style.txt ]; then
             echo "Coding style errors found"
+	    cat coding_style.txt
             exit 1
           fi
 
