@@ -11,7 +11,7 @@ on:
 env:
 
   MIRROR_SSH_URL: "github.com:EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26.git"
-  EXECUTABLES: "mysh"
+  EXECUTABLES: "amazed"
 
 jobs:
 
