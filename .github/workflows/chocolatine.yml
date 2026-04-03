@@ -6,7 +6,7 @@ on:
       - 'no-ga/**'
   pull_request:
     branches-ignore:
-      -	'no-ga/**'
+      - 'no-ga/**'
 
 env:
   MIRROR_SSH_URL: "github.com:EpitechPGE1-2025/G-CPE-200-COT-2-1-amazed-26.git"
